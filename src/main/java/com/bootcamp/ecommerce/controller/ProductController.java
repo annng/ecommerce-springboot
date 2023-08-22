@@ -7,6 +7,7 @@ import com.bootcamp.ecommerce.response.ResponseData;
 import com.bootcamp.ecommerce.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,17 +25,17 @@ public class ProductController {
 
 
     @GetMapping()
-    public List<ProductDto> getProducts(){
+    public ResponseEntity<List<ProductDto>> getProducts(){
         return productService.getProducts();
     }
 
     @PostMapping
-    public ProductDto addProducts(@Valid @RequestBody ProductDto product){
+    public ResponseEntity<ProductDto> addProducts(@Valid @RequestBody ProductDto product){
         return productService.postProduct(product);
     }
 
     @PutMapping("/{id}")
-    public ProductDto updateProducts(@PathVariable Long id, @RequestBody ProductDto product){
+    public ResponseEntity<ProductDto> updateProducts(@PathVariable Long id, @RequestBody ProductDto product){
         return productService.putProduct(id, product);
     }
 

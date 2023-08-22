@@ -1,9 +1,11 @@
 package com.bootcamp.ecommerce.controller;
 
+import com.bootcamp.ecommerce.entity.User;
 import com.bootcamp.ecommerce.model.UserDto;
 import com.bootcamp.ecommerce.response.ResponseData;
 import com.bootcamp.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,22 +17,22 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/{id}")
-    public UserDto getUser(@PathVariable Long id){
+    public ResponseEntity<UserDto> getUser(@PathVariable Long id){
         return userService.getUser(id);
     }
 
     @GetMapping()
-    public ResponseData<List<UserDto>> getUser(){
+    public ResponseEntity<ResponseData<List<UserDto>>> getUser(){
         return userService.getUser();
     }
 
-    @PutMapping
-    public String putUser(){
-        return "ini method put";
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> putUser(@PathVariable Long id, UserDto user){
+        return userService.updateUser(id, user);
     }
 
     @PostMapping
-    public UserDto postUser(@RequestBody UserDto userDto){
+    public ResponseEntity<UserDto> postUser(@RequestBody UserDto userDto){
         return userService.postUser(userDto);
     }
 }

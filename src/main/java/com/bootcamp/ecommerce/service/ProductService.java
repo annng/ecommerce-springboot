@@ -5,6 +5,8 @@ import com.bootcamp.ecommerce.model.ProductDto;
 import com.bootcamp.ecommerce.repository.ProductRepository;
 import com.bootcamp.ecommerce.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<ProductDto> getProducts() {
+    public ResponseEntity<List<ProductDto>> getProducts() {
         List<Product> productDb = productRepository.findAll();
         List<ProductDto> products = new ArrayList<>();
 
@@ -30,7 +32,7 @@ public class ProductService {
                     .build());
         }
 
-        return products;
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     public ResponseData<ProductDto> getProduct(Long id) {
@@ -61,7 +63,7 @@ public class ProductService {
         return response;
     }
 
-    public ProductDto postProduct(ProductDto productDto) {
+    public ResponseEntity<ProductDto> postProduct(ProductDto productDto) {
 
         Product product = Product.builder()
                 .title(productDto.getTitle())
@@ -71,10 +73,10 @@ public class ProductService {
                 .build();
 
         productRepository.save(product);
-        return productDto;
+        return new ResponseEntity<>(productDto, HttpStatus.OK);
     }
 
-    public ProductDto putProduct(Long idProduct, ProductDto productDto) {
+    public ResponseEntity<ProductDto> putProduct(Long idProduct, ProductDto productDto) {
         Optional<Product> productDb = productRepository.findById(idProduct);
 
         if (productDb.isPresent()) {
@@ -88,7 +90,7 @@ public class ProductService {
 
             productRepository.save(product);
         }
-        return productDto;
+        return new ResponseEntity<>(productDto, HttpStatus.OK);
     }
 
 
