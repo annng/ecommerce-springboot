@@ -1,6 +1,7 @@
 package com.bootcamp.ecommerce.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +21,8 @@ public class Order {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "no_invoice", nullable = false)
+    @Column(name = "no_invoice")
+    @NotNull
     @Size(min = 10, max = 100)
     private String noInvoice;
 
@@ -28,26 +30,30 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "id_product", nullable = false)
+    @Column(name = "id_product")
+    @NotNull
     private Long productId;
 
-    @Column(name = "title_product", nullable = false)
+    @Column(name = "title_product")
+    @NotNull
     @Size(min = 3, max = 100)
     private String productTitle;
 
-    @Column(name = "image_product", nullable = true)
+    @Column(name = "image_product")
     @Size(max = 255)
     private String productImages;
 
-    @Column(name = "product_description", nullable = true)
+    @Column(name = "product_description")
     @Size(max = 255)
     private String productDescription;
 
-    @Column(name = "qty", nullable = false)
+    @Column(name = "qty")
     @Size(max = 3)
+    @NotNull
     private Integer qty;
 
-    @Column(nullable = false)
+    @Column()
     @Size(max = 10)
+    @NotNull
     private Long price;
 }

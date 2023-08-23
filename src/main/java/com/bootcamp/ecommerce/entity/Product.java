@@ -1,6 +1,7 @@
 package com.bootcamp.ecommerce.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,20 +22,22 @@ public class Product {
     private Long id;
 
 
-    @Column(nullable = false)
-    @Size(min = 3, max = 100)
+    @Column()
+    @NotNull
+    @Size(min = 5, max = 100)
     private String title;
 
-    @Column(nullable = true)
+    @Column()
     @Size(max = 255)
     private String images;
 
-    @Column(nullable = true)
+    @Column()
     @Size(max = 255)
     private String description;
 
 
-    @Column(nullable = false)
+    @Column()
+    @NotNull
     @Size(max = 10)
     private Long price;
 }

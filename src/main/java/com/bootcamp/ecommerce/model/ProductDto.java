@@ -18,12 +18,14 @@ public class ProductDto {
     private Long id;
 
     @NotNull
-    @Size(min = 5, max = 60)
+    @Size(min = 5, max = 100)
     private String title;
+    @Size(max = 255)
     private String images;
-    @NotNull
-    @Size(min = 10, max = 100)
+    @Size(max = 255)
     private String description;
+    @NotNull
+    @Size(max = 10)
     private Long price;
 
 }

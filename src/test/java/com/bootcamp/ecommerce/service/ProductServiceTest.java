@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.Optional;
+
 @DataJpaTest
 public class ProductServiceTest {
 
@@ -30,5 +32,14 @@ public class ProductServiceTest {
 
         productRepository.save(product);
         Assertions.assertThat(product.getId()).isGreaterThan(0);
+    }
+
+    @Test
+    @Rollback(value = false)
+    @Order(2)
+    public void getProductById(){
+        Optional<Product> product = productRepository.findById(1L);
+
+        Assertions.assertThat(product.get().getId()).isEqualTo(1L);
     }
 }

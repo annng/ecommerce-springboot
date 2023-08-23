@@ -22,12 +22,13 @@ public class User {
     private Long id;
 
 
-    @Column(nullable = false)
+    @Column()
     @Size(min = 3, max = 100)
     @NotNull
     private String name;
 
-    @Column(nullable = false)
+    @Column()
     @Size(max = 100)
+    @NotNull
     private String address;
 }

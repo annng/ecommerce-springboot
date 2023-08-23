@@ -68,9 +68,16 @@ public class UserService {
                 .name(userDto.getName())
                 .address(userDto.getAddress())
                 .build();
+        User saved = userRepository.save(user);
+        if (saved != null) {
+            userDto.setId(saved.getId());
+            userDto.setName(saved.getName());
+            userDto.setAddress(saved.getAddress());
+            return new ResponseEntity<>(userDto, HttpStatus.OK);
+        } else {
+            throw new RuntimeException("Fail");
+        }
 
-        userRepository.save(user);
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
 
