@@ -1,8 +1,6 @@
 package com.bootcamp.ecommerce.controller;
 
-import com.bootcamp.ecommerce.entity.Product;
 import com.bootcamp.ecommerce.model.ProductDto;
-import com.bootcamp.ecommerce.model.UserDto;
 import com.bootcamp.ecommerce.response.ResponseData;
 import com.bootcamp.ecommerce.service.ProductService;
 import jakarta.validation.Valid;

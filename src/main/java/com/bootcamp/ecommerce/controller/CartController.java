@@ -1,11 +1,8 @@
 package com.bootcamp.ecommerce.controller;
 
 import com.bootcamp.ecommerce.model.CartDto;
-import com.bootcamp.ecommerce.model.ProductDto;
-import com.bootcamp.ecommerce.model.UserDto;
 import com.bootcamp.ecommerce.response.ResponseData;
 import com.bootcamp.ecommerce.service.CartService;
-import com.bootcamp.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

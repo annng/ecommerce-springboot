@@ -1,13 +1,11 @@
 package com.bootcamp.ecommerce.controller;
 
-import com.bootcamp.ecommerce.entity.User;
 import com.bootcamp.ecommerce.model.UserDto;
 import com.bootcamp.ecommerce.response.ResponseData;
 import com.bootcamp.ecommerce.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
